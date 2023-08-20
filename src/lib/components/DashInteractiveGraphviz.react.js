@@ -25,12 +25,11 @@ class DashInteractiveGraphviz extends Component {
             d3.select('.graph')
                 .graphviz()
                 .engine(engine)
+ 	        .tweenPaths(false)
+ 	        .tweenShapes(false)
                 .width(size.width)
                 .height(size.height)
                 .fit(true)
-                .transition(
-                    d3.transition('main').ease(d3.easeLinear).duration(1000)
-                )
                 .attributer(function (d, i, g) {
                     if (onNodeClick && d.attributes.class === 'node') {
                         this.onclick = () => onNodeClick(d.key);
